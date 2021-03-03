@@ -1,14 +1,21 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Pokedex from './components/Pokedex';
+import About from './components/About';
+import Header from './components/Header';
 import pokemons from './data';
-import Pokedex from './Pokedex';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1> Pokedex </h1>
-      <Pokedex pokemons={pokemons} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Route exact path="/" render={ () => <Pokedex pokemons={ pokemons } /> } />
+        <Route path="/about" component={ About } />
+        
+      </div>
+    </BrowserRouter>
   );
 }
 
