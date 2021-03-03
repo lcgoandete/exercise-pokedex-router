@@ -6,7 +6,7 @@ class Pokemon extends React.Component {
   render() {
     const {name, type, averageWeight, image, id} = this.props.pokemon;
     return (
-      <div className="pokemon">
+      <div className="pokemon"> 
         <div>
           <p>{name}</p>
           <p>{type}</p>
@@ -15,7 +15,7 @@ class Pokemon extends React.Component {
           </p>
         </div>
         <img src={image} alt={`${name} sprite`} />
-        <Link to="/PokemonDetails">Details</Link>
+        <Link to={ `/pokemons/${ id }` }>Details</Link>
       </div>
     );
   }

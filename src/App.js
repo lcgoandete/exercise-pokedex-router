@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import PokemonDetails from './components/PokemonDetails';
+import NotFound from './components/NotFound';
 import Pokedex from './components/Pokedex';
-import About from './components/About';
 import Header from './components/Header';
+import About from './components/About';
 import pokemons from './data';
 import './App.css';
 
@@ -11,8 +13,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Route exact path="/" render={ () => <Pokedex pokemons={ pokemons } /> } />
-        <Route path="/about" component={ About } />
+        <Switch>
+          <Route exact path="/" render={ () => <Pokedex pokemons={ pokemons } /> } />
+          <Route path="/pokemons/:id" render={ (props) =>  <PokemonDetails { ...props } pokemons={ pokemons }/>} />
+          <Route path="/about" component={ About } />
+          <Route component={ NotFound } />
+        </Switch>
         
       </div>
     </BrowserRouter>
